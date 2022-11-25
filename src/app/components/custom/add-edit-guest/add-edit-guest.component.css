@@ -1,0 +1,48 @@
+/* Add or edit guest container class */
+.add-edit-guest-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px;
+    gap: 24px;
+    background: #FFFFFF;
+}
+
+/* Header container*/
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 49px;
+    height: 40px;
+    width: 100%;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Add or edit guest title class */
+.add-edit-guest-title {
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: capitalize;
+    color: #393A4C;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Action buttons container class */
+.action-buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}

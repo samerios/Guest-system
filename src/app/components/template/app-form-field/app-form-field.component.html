@@ -1,0 +1,17 @@
+<div class="form-field-container">
+    <span class="form-field-title font-class">{{title}}</span>
+    <mat-form-field #materialFormField [appearance]="appearance">
+        <span matPrefix>
+            <ng-content select="[prefix]"></ng-content>
+        </span>
+
+        <mat-label class="form-field-label-title font-class">{{label}}</mat-label>
+        <ng-content></ng-content>
+        <span matSuffix>
+            <ng-content select="[suffix]"></ng-content>
+        </span>
+        <mat-error>
+            <mat-error *ngIf="control.invalid">required</mat-error>
+        </mat-error>
+    </mat-form-field>
+</div>
