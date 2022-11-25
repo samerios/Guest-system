@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Avenir';
+}
+
+.font-class {
+    font-family: 'Avenir';
+    font-style: normal;
+}
+
+button {
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+}
