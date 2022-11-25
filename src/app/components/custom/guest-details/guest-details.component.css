@@ -1,0 +1,350 @@
+/* Guest details container class */
+.guest-details-container {
+    box-sizing: border-box;
+
+    /* Auto layout */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 24px;
+    
+    width: 416px;
+    height: 224px;
+    
+    background: #FEFEFE;
+    border: 1px solid #F3F3F3;
+    /* Shadow */
+    
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+/* Guest title class */
+.guest-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 153px;
+    height: 51px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Guest title wrapper class */
+.guest-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 153px;
+    height: 35px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Guest title class*/
+.guest-title {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 25px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+
+    /* dark gray brand */
+
+    color: #393A4C;
+}
+
+/* Guet title line */
+.guest-title-line {
+    width: 153px;
+    height: 0px;
+
+    border: 1px solid #E5E7EB;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* Guest contact info container class */
+.guest-contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 384px;
+    height: 45px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* Guest contact info wrapper class*/
+.guest-contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    width: 384px;
+    height: 45px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0
+}
+
+/* Guest phone number container class */
+.guest-phonenumber-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    width: 168px;
+    height: 45px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+/* Guest contact line */
+.guest-contact-line {
+    width: 45px;
+    height: 0px;
+
+    opacity: 0.1;
+    /* dark gray brand */
+
+    border: 1px solid #393A4C;
+    transform: rotate(90deg);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* Guest email container class */
+.guest-email-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    width: 168px;
+    height: 45px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 1;
+}
+
+/* Guest email title container class */
+.guest-email-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+
+    width: 134px;
+    height: 45px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/* Guest email class */
+.guest-email {
+    width: 134px;
+    height: 22px;
+
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-transform: capitalize;
+
+    /* dark gray brand */
+
+    color: #393A4C;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Guest email title class */
+.guest-email-title {
+    width: 90px;
+    height: 19px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: capitalize;
+
+    /* dark gray brand */
+
+    color: #393A4C;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/* Guest phone number title class */
+.guest-phonenumber-title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: capitalize;
+
+    /* dark gray brand */
+
+    color: #393A4C;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/* Guest phone number class*/
+.guest-phonenumber {
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+    text-transform: capitalize;
+
+    /* dark gray brand */
+
+    color: #393A4C;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+
+/* Guest action buttons container class */
+.guest-action-buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
+    width: 384px;
+    height: 48px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* Guest action accent button*/
+.guest-action-accent-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 184px;
+    height: 48px;
+
+    /* purple brand */
+
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+/* Guest action primary button*/
+.guest-action-primary-button {
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 40px;
+    gap: 10px;
+
+    width: 184px;
+    height: 48px;
+
+    /* purple brand */
+
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
