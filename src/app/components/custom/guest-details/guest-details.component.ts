@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Guest } from 'src/app/models/guest';
 
 @Component({
   selector: 'app-guest-details',
@@ -7,14 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GuestDetailsComponent implements OnInit {
 
-  /** Guest name */
-  @Input() name!: string;
+  /** Guest object */
+  @Input() guest!: Guest;
 
-  /** Guest phone number */
-  @Input() phone!: string;
-
-  /** Guest email address */
-  @Input() email!: string;
+  /* Event emitter (deleteButtonClicked)*/
+  @Output() deleteButtonClicked: EventEmitter<number> = new EventEmitter<number>();
 
   /** Phone number title */
   phoneTitle!: string;

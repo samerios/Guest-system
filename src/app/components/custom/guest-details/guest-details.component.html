@@ -4,7 +4,7 @@
             <div class="guest-title-icon-wrapper">
                 <mat-icon class="guest-title-icon">task_alt</mat-icon>
             </div>
-            <div class="guest-title font-class">{{name}}</div>
+            <div class="guest-title font-class">{{guest.name}}</div>
         </div>
         <div class="guest-title-line">
         </div>
@@ -15,7 +15,7 @@
             <div class="guest-phonenumber-container">
                 <mat-icon appChangeBorderColorWhenHover color="#D9D9D9" hoverColor="#A5B8F0">call</mat-icon>
                 <div class="guest-phonenumber-title-container">
-                    <div class="guest-phonenumber font-class">{{phone}}</div>
+                    <div class="guest-phonenumber font-class">{{guest.phone}}</div>
                     <div class="guest-phonenumber-title font-class">{{phoneTitle}}</div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <div class="guest-email-container">
                 <mat-icon appChangeBorderColorWhenHover color="#D9D9D9" hoverColor="#A5B8F0">alternate_email</mat-icon>
                 <div class="guest-email-title-container">
-                    <div class="guest-email font-class">{{email}}</div>
+                    <div class="guest-email font-class">{{guest.email}}</div>
                     <div class="guest-email-title font-class">{{emailTitle}}</div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
 
     <div class="guest-action-buttons-container">
         <div class="guest-action-accent-button font-class">
-            <button mat-stroked-button color="accent">delete</button>
+            <button mat-stroked-button color="accent" (click)="deleteButtonClicked.emit(guest.id)">delete</button>
         </div>
         <div class="guest-action-primary-button font-class">
             <button mat-flat-button color="primary">edit guest</button>

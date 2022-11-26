@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ButtonType } from './enums/button-type';
 import { DialogType } from './enums/dialog-type';
 import { Guest } from './models/guest';
 import { ApiService } from './shared/api.service';
@@ -52,5 +53,28 @@ export class AppComponent implements OnInit {
         }
       }
     );
+  }
+
+  /**
+   * Guest details delete button clicked
+   * @param id 
+   */
+  deleteButtonClicked(id: number) {
+    this.ui.openDialog(DialogType.YesNoCancelPrompt, "Warning", "Are you sure to delete guest id : " + id + " ?").subscribe((result: ButtonType) => {
+      let buttonType: unknown = ButtonType[result];
+
+      // Delete guest if clicked on yes button
+      if (buttonType == ButtonType.Yes) {
+        this.api.delete("http://tapi.yabi.cloud/api/delete/", id).subscribe({
+          next: (ff) => {
+            //this.initUsersTable();
+            console.log(ff)
+          },
+          error: () => {
+            this.ui.openDialog(DialogType.Alert, "Error", "Error while fetching records");
+          }
+        });
+      }
+    });
   }
 }

@@ -49,12 +49,11 @@ export class ApiService {
   /**
    * Put data
    * @param url Url
-   * @param id Id
    * @param data Data
    * @returns Observable
    */
-  put<T>(url: string, id: any, data: T): Observable<any> {
-    return this.httpClient.put<any>(url + '' + id, data);
+  put<T>(url: string, data: T): Observable<any> {
+    return this.httpClient.put<any>(url, data);
   }
 
   /**
