@@ -36,7 +36,7 @@
             <button mat-stroked-button color="accent" (click)="deleteButtonClicked.emit(guest.id)">delete</button>
         </div>
         <div class="guest-action-primary-button font-class">
-            <button mat-flat-button color="primary">edit guest</button>
+            <button mat-flat-button color="primary" (click)="editButtonClicked.emit(guest)">edit guest</button>
         </div>
     </div>
 </div>

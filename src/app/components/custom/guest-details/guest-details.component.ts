@@ -11,8 +11,11 @@ export class GuestDetailsComponent implements OnInit {
   /** Guest object */
   @Input() guest!: Guest;
 
-  /* Event emitter (deleteButtonClicked)*/
+  /**  Event emitter (deleteButtonClicked) */
   @Output() deleteButtonClicked: EventEmitter<number> = new EventEmitter<number>();
+
+  /** Event emitter editButtonClicked */
+  @Output() editButtonClicked: EventEmitter<Guest> = new EventEmitter<Guest>();
 
   /** Phone number title */
   phoneTitle!: string;

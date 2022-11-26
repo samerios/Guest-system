@@ -1,7 +1,4 @@
 <mat-drawer-container class="drawer-container" autosize>
-    <mat-drawer #addOrEditGuestSidenav class="add-edit-guest-sidenav" mode="over" position="end">
-        <app-add-edit-guest ></app-add-edit-guest>
-    </mat-drawer>
 
     <mat-drawer-content class="sidenav-content-container">
         <div class="font-class app-header-container">{{appHeaderTitle}}</div>
@@ -11,11 +8,14 @@
                     <div class="font-class invite-guest-title">
                         {{inviteGuestTitle}}
                     </div>
-                    <button mat-flat-button color="primary" (click)="addOrEditGuestSidenav.toggle()">
+                    <button mat-flat-button color="primary"
+                        (click)="this.router.navigate(['/guest']);                    ">
                         <mat-icon>add_circle</mat-icon>
                         {{inviteGuestButtonTitle}}
                     </button>
+
                 </div>
+                <router-outlet></router-outlet>
 
                 <ng-template *ngIf="noData;else guestsDetailsContainer">
                     <div class="no-data-message-container">
@@ -25,7 +25,10 @@
                 </ng-template>
                 <ng-template #guestsDetailsContainer>
                     <div class="guests-details-container">
-                        <app-guest-details *ngFor="let guest of guests" [guest]="guest" (deleteButtonClicked)="deleteButtonClicked($event)"></app-guest-details>
+                        <app-guest-details *ngFor="let guest of guests" [guest]="guest"
+                            (deleteButtonClicked)="deleteButtonClicked($event)"
+                            (editButtonClicked)="this.router.navigate(['/guest/'+guest.id+''])">
+                        </app-guest-details>
                     </div>
                 </ng-template>
             </div>
@@ -45,4 +48,5 @@
             </div>
         </div>
     </mat-drawer>
+
 </mat-drawer-container>

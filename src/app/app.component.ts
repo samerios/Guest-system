@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ButtonType } from './enums/button-type';
 import { DialogType } from './enums/dialog-type';
 import { Guest } from './models/guest';
@@ -11,6 +12,7 @@ import { UiService } from './shared/ui.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+[x: string]: any;
 
   /** App header title */
   appHeaderTitle: string = "dashboard";
@@ -38,7 +40,7 @@ export class AppComponent implements OnInit {
    * @param api Api service for use getAll/get/post/put/delete methods
    * @param ui Ui service for open dialogs messages
    */
-  constructor(private api: ApiService, private ui: UiService) { }
+  constructor(private api: ApiService, private ui: UiService,public router: Router) { }
 
   ngOnInit(): void {
 

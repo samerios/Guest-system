@@ -2,8 +2,10 @@
     <div class="header-container">
         <div class="font-class add-edit-guest-title">{{inviteGuestTitle}}</div>
         <div class="action-buttons-container">
-            <button mat-flat-button>Cancel</button>
-            <button mat-flat-button color="primary" (click)="addOrEditButtonClicked()">Invite</button>
+            <button mat-flat-button (click)="closeDrawer.emit(true)">Cancel</button>
+            <button mat-flat-button color="primary" (click)="addOrEditButtonClicked()">
+                {{componentState=="Add"? "invite": "update"}}
+            </button>
         </div>
     </div>
 

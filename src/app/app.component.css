@@ -48,9 +48,6 @@
   justify-content: space-between
 }
 
-/* Add or edit guest sidenav */
-.add-edit-guest-sidenav {}
-
 /* Invite guest container class*/
 .invite-guest-container {
   display: flex;
