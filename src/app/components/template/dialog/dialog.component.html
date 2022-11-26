@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>{{this.title}}</h1>
+<div mat-dialog-content>{{this.content}}</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="clickButton(button.type)"
+        *ngFor="let button of this.buttons">{{button.name}}</button>
+</div>

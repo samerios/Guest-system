@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogType } from './enums/dialog-type';
 import { Guest } from './models/guest';
+import { ApiService } from './shared/api.service';
+import { UiService } from './shared/ui.service';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +10,6 @@ import { Guest } from './models/guest';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.guests = [
-      { id: 1, name: "dsds", phone: "5252114222", email: "vv@dsdsd.com" },
-      { id: 2, name: "ttt", phone: "5252114222", email: "asas@dsdsd.com" },
-      { id: 3, name: "dffdsds", phone: "55822", email: "tt@dsdsd.com" },
-      { id: 4, name: "fdf", phone: "34343", email: "hh@ff.com" },
-      { id: 5, name: "dsse432xc", phone: "3434", email: "asas@dsdsd.com" },
-      { id: 6, name: "qwww", phone: "5252114222", email: "asas@dsdsd.com" },
-      { id: 7, name: "xxxx", phone: "5252114222", email: "asas@dsdsd.com" },
-      { id: 8, name: "nnnn", phone: "5252114222", email: "asas@dsdsd.com" },
-      { id: 9, name: "mmmm", phone: "5252114222", email: "rrr@dsdsd.com" },
-      { id: 10, name: "rrrr", phone: "5252114222", email: "asas@dsdsd.com" },
-    ]
-  }
 
   /** App header title */
   appHeaderTitle: string = "dashboard";
@@ -43,6 +29,28 @@ export class AppComponent implements OnInit {
   /** Is no data for sho no data message or show data if false */
   noData = false;
 
+  /* Guests array */
   guests!: Guest[];
 
+  /**
+   * Constructor
+   * @param api Api service for use getAll/get/post/put/delete methods
+   * @param ui Ui service for open dialogs messages
+   */
+  constructor(private api: ApiService, private ui: UiService) { }
+
+  ngOnInit(): void {
+
+    /** Get guests and init guests array */
+    this.api.getAll("http://tapi.yabi.cloud/api/read/").subscribe(
+      {
+        next: (data) => {
+          this.guests = data.body;
+        },
+        error: () => {
+          this.ui.openDialog(DialogType.Alert, "Error", "Error while fetching records");
+        }
+      }
+    );
+  }
 }

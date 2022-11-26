@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './modules/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { AddEditGuestComponent } from './components/custom/add-edit-guest/add-ed
 import { AppFormFieldComponent } from './components/template/app-form-field/app-form-field.component';
 import { GuestDetailsComponent } from './components/custom/guest-details/guest-details.component';
 import { ChangeBorderColorWhenHoverDirective } from './directives/change-border-color-when-hover.directive';
+import { DialogComponent } from './components/template/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { ChangeBorderColorWhenHoverDirective } from './directives/change-border-
     AddEditGuestComponent,
     AppFormFieldComponent,
     GuestDetailsComponent,
-    ChangeBorderColorWhenHoverDirective
+    ChangeBorderColorWhenHoverDirective,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

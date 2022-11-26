@@ -6,6 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 @NgModule({
     exports: [
         MatSidenavModule,
@@ -14,7 +17,8 @@ import { MatInputModule } from '@angular/material/input';
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatDialogModule
     ]
 })
 
