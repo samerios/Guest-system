@@ -1,6 +1,6 @@
 <mat-drawer-container class="drawer-container" autosize>
     <mat-drawer #addOrEditGuestSidenav class="add-edit-guest-sidenav" mode="over" position="end">
-        <app-add-edit-guest></app-add-edit-guest>
+        <app-add-edit-guest ></app-add-edit-guest>
     </mat-drawer>
 
     <mat-drawer-content class="sidenav-content-container">
@@ -25,8 +25,7 @@
                 </ng-template>
                 <ng-template #guestsDetailsContainer>
                     <div class="guests-details-container">
-                        <app-guest-details *ngFor="let guest of guests" [name]="guest.name" [phone]="guest.phone"
-                            [email]="guest.email"></app-guest-details>
+                        <app-guest-details *ngFor="let guest of guests" [guest]="guest" (deleteButtonClicked)="deleteButtonClicked($event)"></app-guest-details>
                     </div>
                 </ng-template>
             </div>
