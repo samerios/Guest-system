@@ -1,5 +1,4 @@
 <mat-drawer-container class="drawer-container" autosize>
-
     <mat-drawer-content class="sidenav-content-container">
         <div class="font-class app-header-container">{{appHeaderTitle}}</div>
         <div class="sidenav-content-wrapper">
@@ -13,9 +12,7 @@
                         <mat-icon>add_circle</mat-icon>
                         {{inviteGuestButtonTitle}}
                     </button>
-
                 </div>
-                <router-outlet></router-outlet>
 
                 <ng-template *ngIf="noData;else guestsDetailsContainer">
                     <div class="no-data-message-container">
@@ -32,21 +29,15 @@
                     </div>
                 </ng-template>
             </div>
+            <router-outlet></router-outlet>
 
             <div style="height:40%" *ngIf="noData">
                 <img style="width:400px;height: 290px;" src="../assets/images/noData.png" />
             </div>
         </div>
+
     </mat-drawer-content>
 
-    <mat-drawer #mainSidenav class="main-sidenav" mode="side" opened="true" position="start">
-        <div style="display: flex;flex-direction: column;align-items: center;gap: 25px;padding: 20px;">
-            <img src="../assets/images/yabiIcon.png" />
-            <div class="font-class dashboard-container">
-                <mat-icon style="color:#FEFEFE;">dashboard</mat-icon>
-                <span>dashboard</span>
-            </div>
-        </div>
-    </mat-drawer>
-
 </mat-drawer-container>
+
+<app-main-sidenav></app-main-sidenav>

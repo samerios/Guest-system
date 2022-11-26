@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -17,9 +17,6 @@ export class AddEditGuestSidenavComponent implements OnInit {
 
   /** Guest object for send to  "app-add-edit-guest" component*/
   guest?: Guest = undefined;
-
-  /** Vie child for control in the drawer to open or close... */
-  @ViewChild('addOrEditGuestSidenav', { static: true }) public drawer!: MatDrawer;
 
   /**
    * Constructor
@@ -49,9 +46,6 @@ export class AddEditGuestSidenavComponent implements OnInit {
         }
       });*/
     }
-
-    // Open drawer
-    this.drawer.opened = true;
   }
 
   /**
@@ -61,7 +55,6 @@ export class AddEditGuestSidenavComponent implements OnInit {
    */
   close(closed: boolean) {
     if (closed) {
-      this.drawer.close();
       this.location.back();
     }
   }

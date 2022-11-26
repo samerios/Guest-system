@@ -12,7 +12,6 @@ import { UiService } from './shared/ui.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-[x: string]: any;
 
   /** App header title */
   appHeaderTitle: string = "dashboard";
