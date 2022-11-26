@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEditGuestComponent } from './components/custom/add-edit-guest/add-edit-guest.component';
 import { AppFormFieldComponent } from './components/template/app-form-field/app-form-field.component';
 import { GuestDetailsComponent } from './components/custom/guest-details/guest-details.component';
+import { ChangeBorderColorWhenHoverDirective } from './directives/change-border-color-when-hover.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddEditGuestComponent,
     AppFormFieldComponent,
-    GuestDetailsComponent
+    GuestDetailsComponent,
+    ChangeBorderColorWhenHoverDirective
   ],
   imports: [
     BrowserModule,

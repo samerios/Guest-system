@@ -16,14 +16,22 @@
                         {{inviteGuestButtonTitle}}
                     </button>
                 </div>
-                <div *ngIf="show" class="no-data-message-container">
-                    <div class="font-class">{{noDataTitle}}</div>
-                    <div class="font-class">{{noDataSubTitle}}</div>
-                    <app-guest-details></app-guest-details>
-                </div>
+
+                <ng-template *ngIf="noData;else guestsDetailsContainer">
+                    <div class="no-data-message-container">
+                        <div class="font-class">{{noDataTitle}}</div>
+                        <div class="font-class">{{noDataSubTitle}}</div>
+                    </div>
+                </ng-template>
+                <ng-template #guestsDetailsContainer>
+                    <div class="guests-details-container">
+                        <app-guest-details *ngFor="let guest of guests" [name]="guest.name" [phone]="guest.phone"
+                            [email]="guest.email"></app-guest-details>
+                    </div>
+                </ng-template>
             </div>
 
-            <div style="height:40%" *ngIf="show">
+            <div style="height:40%" *ngIf="noData">
                 <img style="width:400px;height: 290px;" src="../assets/images/noData.png" />
             </div>
         </div>

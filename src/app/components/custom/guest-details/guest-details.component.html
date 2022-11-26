@@ -1,8 +1,10 @@
 <div class="guest-details-container">
     <div class="guest-title-container">
         <div class="guest-title-wrapper">
-            <mat-icon>home</mat-icon>
-            <div class="guest-title font-class">israel israeli</div>
+            <div class="guest-title-icon-wrapper">
+                <mat-icon class="guest-title-icon">task_alt</mat-icon>
+            </div>
+            <div class="guest-title font-class">{{name}}</div>
         </div>
         <div class="guest-title-line">
         </div>
@@ -11,29 +13,29 @@
     <div class="guest-contact-container">
         <div class="guest-contact-wrapper">
             <div class="guest-phonenumber-container">
-                <mat-icon>phone</mat-icon>
+                <mat-icon appChangeBorderColorWhenHover color="#D9D9D9" hoverColor="#A5B8F0">call</mat-icon>
                 <div class="guest-phonenumber-title-container">
-                    <div class="guest-phonenumber font-class">054-225-5452</div>
-                    <div class="guest-phonenumber-title font-class">phone number</div>
+                    <div class="guest-phonenumber font-class">{{phone}}</div>
+                    <div class="guest-phonenumber-title font-class">{{phoneTitle}}</div>
                 </div>
             </div>
             <div class="guest-contact-line">
             </div>
             <div class="guest-email-container">
-                <mat-icon>email</mat-icon>
+                <mat-icon appChangeBorderColorWhenHover color="#D9D9D9" hoverColor="#A5B8F0">alternate_email</mat-icon>
                 <div class="guest-email-title-container">
-                    <div class="guest-email font-class">ddd@dssd</div>
-                    <div class="guest-email-title font-class">email address</div>
+                    <div class="guest-email font-class">{{email}}</div>
+                    <div class="guest-email-title font-class">{{emailTitle}}</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="guest-action-buttons-container">
-        <div class="guest-action-accent-button">
-            <button mat-flat-button color="accent">delete</button>
+        <div class="guest-action-accent-button font-class">
+            <button mat-stroked-button color="accent">delete</button>
         </div>
-        <div class="guest-action-primary-button">
+        <div class="guest-action-primary-button font-class">
             <button mat-flat-button color="primary">edit guest</button>
         </div>
     </div>

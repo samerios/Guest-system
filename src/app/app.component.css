@@ -132,3 +132,14 @@
   order: 1;
   flex-grow: 0;
 }
+
+/* Guests details container class*/
+.guests-details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 12px 24px;
+  gap: 24px;
+  
+}
