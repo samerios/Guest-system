@@ -11,8 +11,6 @@ import { AppFormFieldComponent } from './components/template/app-form-field/app-
 import { GuestDetailsComponent } from './components/custom/guest-details/guest-details.component';
 import { ChangeBorderColorWhenHoverDirective } from './directives/change-border-color-when-hover.directive';
 import { DialogComponent } from './components/template/dialog/dialog.component';
-import { AddEditGuestSidenavComponent } from './components/custom/add-edit-guest-sidenav/add-edit-guest-sidenav.component';
-import { MainSidenavComponent } from './components/template/main-sidenav/main-sidenav.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +19,7 @@ import { MainSidenavComponent } from './components/template/main-sidenav/main-si
     AppFormFieldComponent,
     GuestDetailsComponent,
     ChangeBorderColorWhenHoverDirective,
-    DialogComponent,
-    AddEditGuestSidenavComponent,
-    MainSidenavComponent
+    DialogComponent
   ],
   imports: [
     BrowserModule,

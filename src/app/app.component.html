@@ -1,5 +1,9 @@
-<mat-drawer-container class="drawer-container" autosize>
-    <mat-drawer-content class="sidenav-content-container">
+<mat-sidenav-container class="sidenav-container" autosize="true">
+
+    <mat-sidenav #addEditGuestSidenav class="add-edit-guest-sidenav" mode="over" position="end" disableClose="true">
+    <app-add-edit-guest [guest]="guest" (closeDrawer)="close($event)"></app-add-edit-guest>
+</mat-sidenav>
+    <mat-sidenav-content class="sidenav-content-container">
         <div class="font-class app-header-container">{{appHeaderTitle}}</div>
         <div class="sidenav-content-wrapper">
             <div class="sidenav-content-first-part">
@@ -7,8 +11,8 @@
                     <div class="font-class invite-guest-title">
                         {{inviteGuestTitle}}
                     </div>
-                    <button class="" mat-flat-button color="primary" 
-                        (click)="this.router.navigate(['/guest']);                    ">
+                    <button mat-flat-button color="primary"
+                        (click)="openAddEditGuestSidenav()">
                         <mat-icon>add_circle</mat-icon>
                         {{inviteGuestButtonTitle}}
                     </button>
@@ -24,7 +28,7 @@
                     <div class="guests-details-container">
                         <app-guest-details *ngFor="let guest of guests" [guest]="guest"
                             (deleteButtonClicked)="deleteButtonClicked($event)"
-                            (editButtonClicked)="this.router.navigate(['/guest/'+guest.id+''])">
+                            (editButtonClicked)="openDrawer()">
                         </app-guest-details>
                     </div>
                 </ng-template>
@@ -40,8 +44,15 @@
             </div>
         </div>
 
-    </mat-drawer-content>
+    </mat-sidenav-content>
 
-</mat-drawer-container>
-
-<app-main-sidenav></app-main-sidenav>
+    <mat-sidenav class="main-sidenav-container" mode="side" opened="true" position="start">
+        <div class="main-sidenav">
+            <img src="/../assets/images/yabiIcon.png" />
+            <div class="font-class dashboard-container">
+                <mat-icon style="color:#FEFEFE;">dashboard</mat-icon>
+                <span>dashboard</span>
+            </div>
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>

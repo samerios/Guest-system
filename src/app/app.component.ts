@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { ButtonType } from './enums/button-type';
 import { DialogType } from './enums/dialog-type';
 import { Guest } from './models/guest';
@@ -12,6 +12,14 @@ import { UiService } from './shared/ui.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  /** View child for control on addEditGuestSidenav */
+  @ViewChild('addEditGuestSidenav')
+  public addEditGuestSidenav!: MatSidenav;
+
+  /** Guest object for send to "app-add-edit-guest" component 
+   * for update whe click on edit guest button*/
+  guest?: Guest = undefined;
 
   /** App header title */
   appHeaderTitle: string = "dashboard";
@@ -36,7 +44,7 @@ export class AppComponent implements OnInit {
    * @param api Api service for use getAll/get/post/put/delete methods
    * @param ui Ui service for open dialogs messages
    */
-  constructor(private api: ApiService, private ui: UiService, public router: Router) { }
+  constructor(private api: ApiService, private ui: UiService) { }
 
   ngOnInit(): void {
 
@@ -51,6 +59,20 @@ export class AppComponent implements OnInit {
         }
       }
     );
+  }
+
+  openAddEditGuestSidenav() {
+    this.addEditGuestSidenav.toggle();
+  }
+
+  /**
+ * On close sidenav event (come from "app-add-edit-guest" component)
+ * @param closed Is closed?
+ */
+  close(closed: boolean) {
+    if (closed) {
+      this.addEditGuestSidenav.close();
+    }
   }
 
   /**
