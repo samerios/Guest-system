@@ -28,9 +28,6 @@ export class AppComponent implements OnInit {
   /** No data sub title */
   noDataSubTitle: string = "please invite new guests to start working";
 
-  /** Is no data for sho no data message or show data if false */
-  noData = false;
-
   /* Guests array */
   guests!: Guest[];
 
@@ -39,7 +36,7 @@ export class AppComponent implements OnInit {
    * @param api Api service for use getAll/get/post/put/delete methods
    * @param ui Ui service for open dialogs messages
    */
-  constructor(private api: ApiService, private ui: UiService,public router: Router) { }
+  constructor(private api: ApiService, private ui: UiService, public router: Router) { }
 
   ngOnInit(): void {
 
@@ -61,7 +58,7 @@ export class AppComponent implements OnInit {
    * @param id 
    */
   deleteButtonClicked(id: number) {
-    this.ui.openDialog(DialogType.YesNoCancelPrompt, "Warning", "Are you sure to delete guest id : " + id + " ?").subscribe((result: ButtonType) => {
+    this.ui.openDialog(DialogType.Prompt, "Warning", "Are you sure to delete guest id : " + id + " ?").subscribe((result: ButtonType) => {
       let buttonType: unknown = ButtonType[result];
 
       // Delete guest if clicked on yes button

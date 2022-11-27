@@ -7,16 +7,19 @@ body {
 
 body {
     margin: 0;
-    font-family: 'Avenir';
 }
 
-.font-class {
-    font-family: 'Avenir';
-    font-style: normal;
+.font-class,.mat-button,.mat-flat-button,.mat-stroked-button {
+    font-family: 'Avenir' !important;
+    font-style: normal !important;
 }
 
 button {
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 800;
+    font-size: 12px;
     text-transform: capitalize;
+}
+
+.mat-flat-button.mat-primary {
+    color: #FEFEFE;
 }

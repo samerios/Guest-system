@@ -21,7 +21,7 @@ export class DialogComponent implements OnInit {
   content!: string;
 
   /** Buttons array of objects */
-  buttons: Array<{ type: ButtonType, name: string }> = [];
+  buttons: Array<{ type: ButtonType, name: string, color: string }> = [];
 
   /**
    *  Constructor
@@ -33,20 +33,20 @@ export class DialogComponent implements OnInit {
     // Init dialog names list for show them in html
     switch (this.type) {
       case DialogType.Alert:
-        this.buttons.push({ type: ButtonType.Ok, name: "Ok" });
+        this.buttons.push({ type: ButtonType.Ok, name: "Ok", color: "primary" });
         break;
       case DialogType.Prompt:
-        this.buttons.push({ type: ButtonType.Ok, name: "Ok" });
-        this.buttons.push({ type: ButtonType.Cancel, name: "Cancel" });
+        this.buttons.push({ type: ButtonType.Ok, name: "Ok", color: "primary" });
+        this.buttons.push({ type: ButtonType.Cancel, name: "Cancel", color: "accent" });
         break;
       case DialogType.YesNoPrompt:
-        this.buttons.push({ type: ButtonType.Yes, name: "Yes" });
-        this.buttons.push({ type: ButtonType.No, name: "No" });
+        this.buttons.push({ type: ButtonType.Yes, name: "Yes", color: "primary" });
+        this.buttons.push({ type: ButtonType.No, name: "No", color: "primary" });
         break;
       case DialogType.YesNoCancelPrompt:
-        this.buttons.push({ type: ButtonType.No, name: "No" });
-        this.buttons.push({ type: ButtonType.Yes, name: "Yes" });
-        this.buttons.push({ type: ButtonType.Cancel, name: "Cancel" });
+        this.buttons.push({ type: ButtonType.Yes, name: "Yes", color: "primary" });
+        this.buttons.push({ type: ButtonType.No, name: "No", color: "primary" });
+        this.buttons.push({ type: ButtonType.Cancel, name: "Cancel", color: "accent" });
         break;
       default:
         break;

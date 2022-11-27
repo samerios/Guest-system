@@ -9,8 +9,6 @@
 
 /* Form field title class */
 .form-field-title {
-    width: 80px;
-    height: 19px;
     font-weight: 500;
     font-size: 14px;
     line-height: 19px;
@@ -22,6 +20,7 @@
     flex-grow: 0;
 }
 
+/* Form field label title class*/
 .form-field-label-title {
     font-weight: 400;
     font-size: 14px;
@@ -31,6 +30,7 @@
     opacity: 0.3;
 }
 
+/* Mat form field full width class */
 .mat-form-field {
     width: 100%;
 }

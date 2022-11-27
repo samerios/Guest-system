@@ -7,14 +7,14 @@
                     <div class="font-class invite-guest-title">
                         {{inviteGuestTitle}}
                     </div>
-                    <button mat-flat-button color="primary"
+                    <button class="" mat-flat-button color="primary" 
                         (click)="this.router.navigate(['/guest']);                    ">
                         <mat-icon>add_circle</mat-icon>
                         {{inviteGuestButtonTitle}}
                     </button>
                 </div>
 
-                <ng-template *ngIf="noData;else guestsDetailsContainer">
+                <ng-template *ngIf="!guests;else guestsDetailsContainer">
                     <div class="no-data-message-container">
                         <div class="font-class">{{noDataTitle}}</div>
                         <div class="font-class">{{noDataSubTitle}}</div>
@@ -31,7 +31,11 @@
             </div>
             <router-outlet></router-outlet>
 
-            <div style="height:40%" *ngIf="noData">
+            <div *ngIf="!guests">
+                <div class="no-data-message-container">
+                    <div class="font-class">{{noDataTitle}}</div>
+                    <div class="font-class">{{noDataSubTitle}}</div>
+                </div>
                 <img style="width:400px;height: 290px;" src="../assets/images/noData.png" />
             </div>
         </div>
