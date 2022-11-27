@@ -11,8 +11,9 @@ import { MatFormField, MatFormFieldControl } from '@angular/material/form-field'
   templateUrl: './app-form-field.component.html',
   styleUrls: ['./app-form-field.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
+
+/** App form field component */
 export class AppFormFieldComponent implements OnInit {
 
   /** Label */
@@ -38,7 +39,11 @@ export class AppFormFieldComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    // Init title
     this.title = this.label;
+
+    // Init form field child content
     this.matFormField._control = this.formFieldControl;
   }
 }

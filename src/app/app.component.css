@@ -7,12 +7,6 @@
 /* Add or edit guest sidenav */
 .add-edit-guest-sidenav {}
 
-/* Sidenav content container class that contains the current view */
-.sidenav-content-container {
-  margin-left: 100px !important;
-  margin-right: unset !important;
-}
-
 /* App header container class */
 .app-header-container {
   font-weight: 800;
@@ -150,4 +144,10 @@
   flex: none;
   order: 1;
   flex-grow: 0;
+}
+
+/* No data image class */
+.no-data-image {
+  width: 400px;
+  height: 290px;
 }

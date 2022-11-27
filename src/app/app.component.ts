@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   /** Guest object for send to "app-add-edit-guest" component 
    * for update whe click on edit guest button*/
-  guest?: Guest = undefined;
+  guest?: Guest;
 
   /** App header title */
   appHeaderTitle: string = "dashboard";
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   /** No data sub title */
   noDataSubTitle: string = "please invite new guests to start working";
 
-  /* Guests array */
+  /**  Guests array */
   guests!: Guest[];
 
   /**
@@ -44,7 +44,8 @@ export class AppComponent implements OnInit {
    * @param api Api service for use getAll/get/post/put/delete methods
    * @param ui Ui service for open dialogs messages
    */
-  constructor(private api: ApiService, private ui: UiService) { }
+  constructor(private api: ApiService, private ui: UiService) {
+  }
 
   ngOnInit(): void {
 
@@ -61,18 +62,27 @@ export class AppComponent implements OnInit {
     );
   }
 
-  openAddEditGuestSidenav() {
+  /**
+   * Open openAddEditGuestSidenav sidenav and sent the guest object for edit 
+   * @param guest Guest object (optional) use when click edit guest button
+   */
+  openAddEditGuestSidenav(guest?: Guest) {
+
+    if (guest) {
+      this.guest = guest;
+    }
+
     this.addEditGuestSidenav.toggle();
   }
 
   /**
  * On close sidenav event (come from "app-add-edit-guest" component)
+ * Close sidenav and update guest to undefined
  * @param closed Is closed?
  */
   close(closed: boolean) {
-    if (closed) {
-      this.addEditGuestSidenav.close();
-    }
+    this.addEditGuestSidenav.close();
+    this.guest = undefined;
   }
 
   /**
@@ -84,7 +94,7 @@ export class AppComponent implements OnInit {
       let buttonType: unknown = ButtonType[result];
 
       // Delete guest if clicked on yes button
-      if (buttonType == ButtonType.Yes) {
+      if (buttonType == ButtonType.Ok) {
         this.api.delete("http://tapi.yabi.cloud/api/delete/", id).subscribe({
           next: (ff) => {
             //this.initUsersTable();

@@ -3,8 +3,14 @@ import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/cor
 @Directive({
   selector: '[appChangeBorderColorWhenHover]'
 })
+
+/** Change border color whe hover directive */
 export class ChangeBorderColorWhenHoverDirective implements OnInit {
 
+  /**
+   * 
+   * @param elementRef Element reference for control DOM
+   */
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit(): void {

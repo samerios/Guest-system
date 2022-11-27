@@ -1,9 +1,11 @@
 <mat-sidenav-container class="sidenav-container" autosize="true">
 
     <mat-sidenav #addEditGuestSidenav class="add-edit-guest-sidenav" mode="over" position="end" disableClose="true">
-    <app-add-edit-guest [guest]="guest" (closeDrawer)="close($event)"></app-add-edit-guest>
-</mat-sidenav>
-    <mat-sidenav-content class="sidenav-content-container">
+        <app-add-edit-guest *ngIf="guest" [guest]="guest" (closeSidenav)="close($event)"></app-add-edit-guest>
+        <app-add-edit-guest *ngIf="!guest" (closeSidenav)="close($event)"></app-add-edit-guest>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
         <div class="font-class app-header-container">{{appHeaderTitle}}</div>
         <div class="sidenav-content-wrapper">
             <div class="sidenav-content-first-part">
@@ -11,8 +13,7 @@
                     <div class="font-class invite-guest-title">
                         {{inviteGuestTitle}}
                     </div>
-                    <button mat-flat-button color="primary"
-                        (click)="openAddEditGuestSidenav()">
+                    <button mat-flat-button color="primary" (click)="openAddEditGuestSidenav()">
                         <mat-icon>add_circle</mat-icon>
                         {{inviteGuestButtonTitle}}
                     </button>
@@ -28,7 +29,7 @@
                     <div class="guests-details-container">
                         <app-guest-details *ngFor="let guest of guests" [guest]="guest"
                             (deleteButtonClicked)="deleteButtonClicked($event)"
-                            (editButtonClicked)="openDrawer()">
+                            (editButtonClicked)="openAddEditGuestSidenav(guest)">
                         </app-guest-details>
                     </div>
                 </ng-template>
@@ -40,10 +41,9 @@
                     <div class="font-class">{{noDataTitle}}</div>
                     <div class="font-class">{{noDataSubTitle}}</div>
                 </div>
-                <img style="width:400px;height: 290px;" src="../assets/images/noData.png" />
+                <img class="no-data-image" src="../assets/images/noData.png" />
             </div>
         </div>
-
     </mat-sidenav-content>
 
     <mat-sidenav class="main-sidenav-container" mode="side" opened="true" position="start">

@@ -9,7 +9,6 @@
     gap: 24px;
     width: 416px;
     height: 224px;
-
     background: #FEFEFE;
     border: 1px solid #F3F3F3;
 
@@ -70,10 +69,9 @@
 .guest-title-line {
     width: 153px;
     height: 0px;
-
     border: 1px solid #E5E7EB;
-    /* Inside auto layout */
 
+    /* Inside auto layout */
     flex: none;
     order: 1;
     align-self: stretch;
@@ -130,7 +128,6 @@
 .guest-contact-line {
     width: 45px;
     height: 0px;
-
     opacity: 0.1;
 
     /* dark gray brand */
@@ -151,7 +148,6 @@
     align-items: center;
     padding: 0px;
     gap: 8px;
-
     width: 168px;
     height: 45px;
     /* Inside auto layout */
@@ -214,7 +210,6 @@
     /* dark gray brand */
     color: #393A4C;
 
-
     /* Inside auto layout */
     flex: none;
     order: 1;
@@ -274,8 +269,8 @@
     flex-grow: 0;
 }
 
-/* Guest action accent button*/
-.guest-action-accent-button {
+/* Guest action button*/
+.guest-action-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -290,39 +285,8 @@
     flex-grow: 1;
 }
 
-.guest-action-accent-button button {
-    line-height: 16px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    width: 184px;
-    height: 48px;
-    justify-content: center;
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-/* Guest action primary button*/
-.guest-action-primary-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    /*padding: 16px 40px;*/
-    gap: 10px;
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-}
-
-
-.guest-action-primary-button button {
+/* Guest action accent button*/
+.guest-action-button button {
     line-height: 16px;
     display: flex;
     align-items: center;

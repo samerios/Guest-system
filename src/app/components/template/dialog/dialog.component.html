@@ -2,16 +2,20 @@
 <div mat-dialog-content>{{this.content}}</div>
 <div mat-dialog-actions>
     <div *ngFor="let button of this.buttons">
+        
         <ng-template *ngIf="button.color==='primary'; then flatButton;else strokedButton"></ng-template>
+
         <ng-template #flatButton>
             <button mat-flat-button mat-dialog-close [color]="button.color" (click)="clickButton(button.type)">
                 {{button.name}}
             </button>
         </ng-template>
+
         <ng-template #strokedButton>
             <button mat-stroked-button mat-dialog-close [color]="button.color" (click)="clickButton(button.type)">
                 {{button.name}}
             </button>
         </ng-template>
+
     </div>
 </div>

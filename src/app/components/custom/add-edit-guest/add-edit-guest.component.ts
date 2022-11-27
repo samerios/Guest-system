@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Guest } from 'src/app/models/guest';
 import { ApiService } from 'src/app/shared/api.service';
@@ -8,13 +8,18 @@ import { ApiService } from 'src/app/shared/api.service';
   templateUrl: './add-edit-guest.component.html',
   styleUrls: ['./add-edit-guest.component.css']
 })
+
+/** Add or edit guest component when the guest input has data
+ *  then the component state is edit, when click on update/invite valid 
+ * and update/ edit data
+ * check if data  */
 export class AddEditGuestComponent implements OnInit {
 
   /** Guest if guest has data that means the component in add state */
   @Input() guest?: Guest;
 
-  /* Close drawer output event */
-  @Output() closeDrawer: EventEmitter<boolean> = new EventEmitter<boolean>();
+  /* Close sidenav output event */
+  @Output() closeSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /** Components stat (Add or Edit) by default is add */
   componentState: string = "Add";
@@ -25,6 +30,11 @@ export class AddEditGuestComponent implements OnInit {
   /** Guest form group */
   guestForm!: FormGroup;
 
+  /**
+   * Constructor
+   * @param formBuilder Form builder init guestForm controls
+   * @param api Api service for use POST/PUT methods
+   */
   constructor(private formBuilder: FormBuilder, private api: ApiService) { }
 
   ngOnInit(): void {
@@ -71,8 +81,8 @@ export class AddEditGuestComponent implements OnInit {
       email: this.guestForm.value['emailAddress']
     }
     this.api.post<any>("http://tapi.yabi.cloud/api/create/", guestAdd).subscribe({
-      next: (message) => {
-        console.log(message)
+      next: () => {
+        this.closeSidenav.emit(true);
       },
       error: (message) => {
         console.log(message)
@@ -81,19 +91,20 @@ export class AddEditGuestComponent implements OnInit {
   }
 
   /**
-   * Update method before check if data has changed
+   * Update method ,before update data check if data has changed
    */
   updateGuest() {
     if (this.guest!.name !== this.guestForm.value['guestName'] ||
       this.guest!.email !== this.guestForm.value['emailAddress'] ||
       this.guest!.phone !== this.guestForm.value['phoneNumber']) {
+
       this.guest!.name = this.guestForm.value['guestName'];
       this.guest!.email = this.guestForm.value['emailAddress'];
       this.guest!.phone = this.guestForm.value['phoneNumber'];
 
       this.api.put("http://tapi.yabi.cloud/api/update/", this.guest).subscribe({
-        next: (message) => {
-          console.log(message)
+        next: () => {
+          this.closeSidenav.emit(true);
         },
         error: (message) => {
           console.log(message)

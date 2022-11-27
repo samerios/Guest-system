@@ -6,9 +6,11 @@ import { Guest } from 'src/app/models/guest';
   templateUrl: './guest-details.component.html',
   styleUrls: ['./guest-details.component.css']
 })
+
+/** Guest details component for display guest card details with edit/delete actions */
 export class GuestDetailsComponent implements OnInit {
 
-  /** Guest object */
+  /** Guest input */
   @Input() guest!: Guest;
 
   /**  Event emitter (deleteButtonClicked) */
