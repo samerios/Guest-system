@@ -1,5 +1,6 @@
-import { AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ButtonType } from 'src/app/enums/button-type';
 import { Guest } from 'src/app/models/guest';
 import { ApiService } from 'src/app/shared/api.service';
 
@@ -18,8 +19,8 @@ export class AddEditGuestComponent implements OnInit {
   /** Guest if guest has data that means the component in add state */
   @Input() guest?: Guest;
 
-  /* Close sidenav output event */
-  @Output() closeSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
+  /* Close sidenav output event, for emit clicked button and success (optional) */
+  @Output() closeSidenav: EventEmitter<{ button: ButtonType, success?: boolean }> = new EventEmitter<{ button: ButtonType, success?: boolean }>();
 
   /** Components stat (Add or Edit) by default is add */
   componentState: string = "Add";
@@ -39,12 +40,13 @@ export class AddEditGuestComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log(this.guest)
     // Init form group and set validators
     this.guestForm = this.formBuilder.group({
       guestName: ['', [Validators.required]],
       emailAddress: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.pattern("[0-9]{3}-[0-9]{7}"),
-       Validators.minLength(11), Validators.maxLength(11)]],
+      Validators.minLength(11), Validators.maxLength(11)]],
     });
 
     // If guest object has data changes component state to Edit 
@@ -58,16 +60,23 @@ export class AddEditGuestComponent implements OnInit {
   }
 
   /**
+   * Cancel button clicked method
+   */
+  cancelButtonClicked() {
+    this.closeSidenav.emit({ button: ButtonType.Cancel })
+  }
+
+  /**
    * add or edit button clicked method check if data valid
    * and update/add data by component state
    */
-  addOrEditButtonClicked() {
+  async addOrEditButtonClicked() {
     if (this.guestForm.valid) {
       if (this.componentState == "Add") {
-        this.addGuest();
+        await this.addGuest();
       }
       else {
-        this.updateGuest();
+        await this.updateGuest();
       }
     }
   }
@@ -75,18 +84,18 @@ export class AddEditGuestComponent implements OnInit {
   /**
    * Add guest method
    */
-  addGuest() {
+  async addGuest() {
     let guestAdd = {
       name: this.guestForm.value['guestName'],
       phone: this.guestForm.value['phoneNumber'],
       email: this.guestForm.value['emailAddress']
     }
-    this.api.post("http://tapi.yabi.cloud/api/create/", guestAdd).subscribe({
+    await this.api.post("http://tapi.yabi.cloud/api/create/", guestAdd).subscribe({
       next: () => {
-        this.closeSidenav.emit(true);
+        this.closeSidenav.emit({ button: ButtonType.Ok, success: true });
       },
       error: () => {
-        this.closeSidenav.emit(false);
+        this.closeSidenav.emit({ button: ButtonType.Ok, success: false });
       }
     });
   }
@@ -94,23 +103,27 @@ export class AddEditGuestComponent implements OnInit {
   /**
    * Update method ,before update data check if data has changed
    */
-  updateGuest() {
+  async updateGuest() {
     if (this.guest!.name !== this.guestForm.value['guestName'] ||
       this.guest!.email !== this.guestForm.value['emailAddress'] ||
       this.guest!.phone !== this.guestForm.value['phoneNumber']) {
 
-      this.guest!.name = this.guestForm.value['guestName'];
-      this.guest!.email = this.guestForm.value['emailAddress'];
-      this.guest!.phone = this.guestForm.value['phoneNumber'];
+      let guest: Guest = {
+        id: this.guest!.id,
+        name: this.guestForm.value['guestName'],
+        phone: this.guestForm.value['phoneNumber'],
+        email: this.guestForm.value['emailAddress']
+      }
 
-      this.api.post("http://tapi.yabi.cloud/api/update/", this.guest).subscribe({
+      await this.api.post("http://tapi.yabi.cloud/api/update/", guest).subscribe({
         next: () => {
-          this.closeSidenav.emit(true);
+          this.closeSidenav.emit({ button: ButtonType.Ok, success: true });
         },
         error: () => {
-          this.closeSidenav.emit(false);
+          this.closeSidenav.emit({ button: ButtonType.Ok, success: false });
         }
       });
     }
   }
+
 }

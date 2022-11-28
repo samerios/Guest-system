@@ -72,6 +72,6 @@ export class ApiService {
    * @returns Observable
    */
   delete(url: string, id: any): Observable<any> {
-    return this.httpClient.delete(url + '' + id);
+    return this.httpClient.delete(url + '' + id, this.options);
   }
 }

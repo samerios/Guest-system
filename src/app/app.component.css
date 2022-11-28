@@ -4,8 +4,9 @@
   height: 100%;
 }
 
-/* Add or edit guest sidenav */
-.add-edit-guest-sidenav {}
+.mat-drawer-content{
+overflow: hidden;
+}
 
 /* App header container class */
 .app-header-container {
@@ -98,6 +99,8 @@
   flex-wrap: wrap;
   padding: 12px 24px;
   gap: 24px;
+  overflow-y:auto;
+  overflow-x: hidden;
 }
 
 /* Main sidenav container class (dashboard and  yabi icon) */

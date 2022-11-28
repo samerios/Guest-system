@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   /** Guest object for send to "app-add-edit-guest" component 
    * for update whe click on edit guest button*/
-  guest?: Guest=undefined;
+  guest?: Guest = undefined;
 
   /** App header title */
   appHeaderTitle: string = "dashboard";
@@ -52,6 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   async initGuests() {
+
     /** Get guests and init guests array */
     await this.api.getAll("http://tapi.yabi.cloud/api/read/").subscribe(
       {
@@ -82,36 +83,38 @@ export class AppComponent implements OnInit {
  * On close sidenav event (come from "app-add-edit-guest" component)
  * Close sidenav and update guest to undefined and init data if success
  *  or show error message if failed
- * @param addOrEditSuccessfully Is addOrEditSuccessfully?
+ * @param close close object
  */
-  async close(addOrEditSuccessfully: boolean) {
+  async close(close: { button: ButtonType, success?: boolean }) {
 
     this.addEditGuestSidenav.close();
 
-    if (addOrEditSuccessfully) {
+    let buttonType: unknown = ButtonType[close.button];
+
+    if (buttonType === ButtonType[ButtonType.Ok] && close.success) {
       await this.initGuests();
     }
-    else {
+    else if (buttonType === ButtonType[ButtonType.Ok] && !close.success) {
       let errorMessage = this.guest ? "Error while update guest" : "Error while add guest";
       this.ui.openDialog(DialogType.Alert, "Error", errorMessage);
     }
+
     this.guest = undefined;
   }
 
   /**
-   * Guest details delete button clicked
-   * @param id 
+   * Guest details delete button clicked, delete and init guests
+   * @param id Guest id
    */
-  deleteButtonClicked(id: number) {
+  async deleteButtonClicked(id: number) {
     this.ui.openDialog(DialogType.Prompt, "Warning", "Are you sure to delete guest id : " + id + " ?").subscribe((result: ButtonType) => {
       let buttonType: unknown = ButtonType[result];
 
       // Delete guest if clicked on yes button
       if (buttonType == ButtonType.Ok) {
-        this.api.delete("http://tapi.yabi.cloud/api/delete/", id).subscribe({
-          next: (ff) => {
-            //this.initUsersTable();
-            console.log(ff)
+        this.api.post("http://tapi.yabi.cloud/api/delete/", { 'id': id }).subscribe({
+          next: async () => {
+            await this.initGuests();
           },
           error: () => {
             this.ui.openDialog(DialogType.Alert, "Error", "Error while fetching records");
