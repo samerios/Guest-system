@@ -299,6 +299,9 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+    border: 1px solid #9578D3;
+    border-radius: 5px;
+
 }
 
 /* Guest title icon wrapper */

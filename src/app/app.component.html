@@ -18,31 +18,38 @@
                         {{inviteGuestButtonTitle}}
                     </button>
                 </div>
+            </div>
 
-                <ng-template *ngIf="!guests;else guestsDetailsContainer">
+
+            <ng-template *ngIf="!guests; then noDataContainer;else guestsDetailsContainer">
+            </ng-template>
+            <ng-template #noDataContainer>
+                <div style="height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;">
                     <div class="no-data-message-container">
                         <div class="font-class">{{noDataTitle}}</div>
                         <div class="font-class">{{noDataSubTitle}}</div>
                     </div>
-                </ng-template>
-                <ng-template #guestsDetailsContainer>
-                    <div class="guests-details-container">
-                        <app-guest-details *ngFor="let guest of guests" [guest]="guest"
-                            (deleteButtonClicked)="deleteButtonClicked($event)"
-                            (editButtonClicked)="openAddEditGuestSidenav(guest)">
-                        </app-guest-details>
-                    </div>
-                </ng-template>
-            </div>
-            <router-outlet></router-outlet>
-
-            <div *ngIf="!guests">
-                <div class="no-data-message-container">
-                    <div class="font-class">{{noDataTitle}}</div>
-                    <div class="font-class">{{noDataSubTitle}}</div>
                 </div>
                 <img class="no-data-image" src="../assets/images/noData.png" />
-            </div>
+            </ng-template>
+
+            <ng-template #guestsDetailsContainer>
+                <div class="guests-details-container">
+                    <app-guest-details *ngFor="let guest of guests" [guest]="guest"
+                        (deleteButtonClicked)="deleteButtonClicked($event)"
+                        (editButtonClicked)="openAddEditGuestSidenav(guest)">
+                    </app-guest-details>
+                </div>
+            </ng-template>
+
+
+
+            <router-outlet></router-outlet>
+
         </div>
     </mat-sidenav-content>
 

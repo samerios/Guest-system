@@ -23,7 +23,6 @@
 .sidenav-content-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: calc(100% - 68px);
   background-color: #F5F5F5;
 }
@@ -31,7 +30,6 @@
 /* Sidenav content first part class 
 (the invite guest button ant title and no data title if no data) */
 .sidenav-content-first-part {
-  height: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-between
