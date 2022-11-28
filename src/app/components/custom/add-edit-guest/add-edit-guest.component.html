@@ -2,7 +2,7 @@
     <div class="header-container">
         <div class="font-class add-edit-guest-title">{{inviteGuestTitle}}</div>
         <div class="action-buttons-container">
-            <button mat-button (click)="closeSidenav.emit(true)">Cancel</button>
+            <button mat-button (click)="closeSidenav.emit(false)">Cancel</button>
             <button mat-flat-button color="primary" (click)="addOrEditButtonClicked()">
                 {{componentState=="Add"? "invite": "update"}}
             </button>
@@ -13,18 +13,23 @@
         <app-form-field label="guest name" 
                         appearance="fill" 
                         [control]="this.guestForm.get('guestName')">
-            <input matInput formControlName="guestName" type="text" />
+            <input matInput 
+                   formControlName="guestName" 
+                   type="text" 
+                   placeholder="israel israeli"/>
         </app-form-field>
         <app-form-field label="phone number" 
                         appearance="fill" 
                         [control]="this.guestForm.get('phoneNumber')">
-            <input matInput formControlName="phoneNumber" type="text" />
+            <input matInput formControlName="phoneNumber" type="tel" placeholder="054-0000000" />
         </app-form-field>
         <app-form-field label="email address" 
                         appearance="fill" 
                         [control]="this.guestForm.get('emailAddress')">
-            <input matInput formControlName="emailAddress" type="email" />
+            <input matInput 
+                   formControlName="emailAddress" 
+                   type="email" 
+                   placeholder="email@email.com" />
         </app-form-field>
     </form>
-    
 </div>

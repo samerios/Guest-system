@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   /** Guest object for send to "app-add-edit-guest" component 
    * for update whe click on edit guest button*/
-  guest?: Guest;
+  guest?: Guest=undefined;
 
   /** App header title */
   appHeaderTitle: string = "dashboard";
@@ -47,10 +47,13 @@ export class AppComponent implements OnInit {
   constructor(private api: ApiService, private ui: UiService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.initGuests();
+  }
 
+  async initGuests() {
     /** Get guests and init guests array */
-    this.api.getAll("http://tapi.yabi.cloud/api/read/").subscribe(
+    await this.api.getAll("http://tapi.yabi.cloud/api/read/").subscribe(
       {
         next: (data) => {
           this.guests = data.body;
@@ -77,11 +80,21 @@ export class AppComponent implements OnInit {
 
   /**
  * On close sidenav event (come from "app-add-edit-guest" component)
- * Close sidenav and update guest to undefined
- * @param closed Is closed?
+ * Close sidenav and update guest to undefined and init data if success
+ *  or show error message if failed
+ * @param addOrEditSuccessfully Is addOrEditSuccessfully?
  */
-  close(closed: boolean) {
+  async close(addOrEditSuccessfully: boolean) {
+
     this.addEditGuestSidenav.close();
+
+    if (addOrEditSuccessfully) {
+      await this.initGuests();
+    }
+    else {
+      let errorMessage = this.guest ? "Error while update guest" : "Error while add guest";
+      this.ui.openDialog(DialogType.Alert, "Error", errorMessage);
+    }
     this.guest = undefined;
   }
 

@@ -43,7 +43,8 @@ export class AddEditGuestComponent implements OnInit {
     this.guestForm = this.formBuilder.group({
       guestName: ['', [Validators.required]],
       emailAddress: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]],
+      phoneNumber: ['', [Validators.pattern("[0-9]{3}-[0-9]{7}"),
+       Validators.minLength(11), Validators.maxLength(11)]],
     });
 
     // If guest object has data changes component state to Edit 
@@ -80,12 +81,12 @@ export class AddEditGuestComponent implements OnInit {
       phone: this.guestForm.value['phoneNumber'],
       email: this.guestForm.value['emailAddress']
     }
-    this.api.post<any>("http://tapi.yabi.cloud/api/create/", guestAdd).subscribe({
+    this.api.post("http://tapi.yabi.cloud/api/create/", guestAdd).subscribe({
       next: () => {
         this.closeSidenav.emit(true);
       },
-      error: (message) => {
-        console.log(message)
+      error: () => {
+        this.closeSidenav.emit(false);
       }
     });
   }
@@ -102,12 +103,12 @@ export class AddEditGuestComponent implements OnInit {
       this.guest!.email = this.guestForm.value['emailAddress'];
       this.guest!.phone = this.guestForm.value['phoneNumber'];
 
-      this.api.put("http://tapi.yabi.cloud/api/update/", this.guest).subscribe({
+      this.api.post("http://tapi.yabi.cloud/api/update/", this.guest).subscribe({
         next: () => {
           this.closeSidenav.emit(true);
         },
-        error: (message) => {
-          console.log(message)
+        error: () => {
+          this.closeSidenav.emit(false);
         }
       });
     }

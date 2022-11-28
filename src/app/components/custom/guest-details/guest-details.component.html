@@ -24,7 +24,7 @@
             <div class="guest-email-container">
                 <mat-icon appChangeBorderColorWhenHover color="#D9D9D9" hoverColor="#A5B8F0">alternate_email</mat-icon>
                 <div class="guest-title-subtitle-container">
-                    <div class="guest-email font-class">{{guest.email}}</div>
+                    <div [matTooltip]="guest.email" class="guest-email font-class">{{guest.email}}</div>
                     <div class="guest-email-title font-class">{{emailTitle}}</div>
                 </div>
             </div>
