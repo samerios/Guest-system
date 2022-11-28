@@ -11,7 +11,7 @@ body {
 
 .font-class,.mat-button,.mat-flat-button,.mat-stroked-button {
     font-family: 'Avenir' !important;
-    font-style: normal !important;
+    font-style: normal !important; 
 }
 
 button {
